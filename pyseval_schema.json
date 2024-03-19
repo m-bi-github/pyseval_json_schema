@@ -1,0 +1,83 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "m-bi.com/pyseval_schema.json",
+    "title": "Python Semantic Model Validations",
+    "description": "Validations of power bi semantic models consisting of DAX queries and their expected results",
+    "type": "object",
+    "properties": {
+        "validations": {
+            "description": "The array of objects representing validations",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "semantic_model_id": {
+                        "description": "The id of the power bi semantic model",
+                        "type": "string"
+                    },
+                    "dax_query_literal": {
+                        "description": "The dax query whose result is validated as a literal string",
+                        "type": "string"
+                    },
+                    "dax_query_file": {
+                        "description": "The dax query whose result is validated as a relative file path",
+                        "type": "string"
+                    },
+                    "expected_result": {
+                        "description": "The array of objects representing the expected row values of the query result table",
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    },
+                    "active": {
+                        "description": "Boolean that determines if the validation is active and thus tested for or not",
+                        "type": "boolean"
+                    },
+                    "state": {
+                        "description": "The literal values 'processed' | 'unprocessed' which declare the state of the validation",
+                        "type": "string",
+                        "pattern": "^(processed|unprocessed)$"
+                    },
+                    "actual_result": {
+                        "description": "The array of objects representing the actual row values of the query result table",
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    },
+                    "validation_result": {
+                        "description": "The literal values 'passed' | 'failed' which declare the result of the validation after being processed",
+                        "type": "string",
+                        "pattern": "^(passed|failed)$"
+                    },
+                    "description": {
+                        "description": "A short description to explain the validation",
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "semantic_model_id",
+                    "expected_result",
+                    "active"
+                ],
+                "oneOf": [
+                    {
+                        "required": [
+                            "dax_query_literal"
+                        ]
+                    },
+                    {
+                        "required": [
+                            "dax_query_file"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "required": [
+        "validations"
+    ]
+}
