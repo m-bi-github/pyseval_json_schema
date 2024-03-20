@@ -15,16 +15,12 @@
                         "description": "The id of the power bi semantic model",
                         "type": "string"
                     },
-                    "dax_query_literal": {
-                        "description": "The dax query whose result is validated as a literal string",
-                        "type": "string"
-                    },
-                    "dax_query_file": {
-                        "description": "The dax query whose result is validated as a relative file path",
+                    "dax_query": {
+                        "description": "The dax query whose result is validated",
                         "type": "string"
                     },
                     "expected_result": {
-                        "description": "The array of objects representing the expected row values of the query result table",
+                        "description": "The array of objects representing the expected row values of the query result table as returned by the power bi api",
                         "type": "array",
                         "items": {
                             "type": "object"
@@ -59,20 +55,9 @@
                 "additionalProperties": false,
                 "required": [
                     "semantic_model_id",
+                    "dax_query",
                     "expected_result",
                     "active"
-                ],
-                "oneOf": [
-                    {
-                        "required": [
-                            "dax_query_literal"
-                        ]
-                    },
-                    {
-                        "required": [
-                            "dax_query_file"
-                        ]
-                    }
                 ]
             }
         }
