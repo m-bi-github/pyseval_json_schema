@@ -37,12 +37,12 @@
                     },
                     "actual_result": {
                         "description": "The array of objects representing the actual row values of the query result table",
-                        "type": "array",
+                        "type": [
+                            "array",
+                            "null"
+                        ],
                         "items": {
-                            "type": [
-                                "object",
-                                "null"
-                            ]
+                            "type": "object"
                         }
                     },
                     "validation_result": {
