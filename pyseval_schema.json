@@ -46,7 +46,7 @@
                         }
                     },
                     "validation_result": {
-                        "description": "The literal values 'passed' | 'failed' | 'unknown' which declare the result of the validation after being processed",
+                        "description": "The literal values 'passed' | 'failed' which declare the result of the validation after being processed",
                         "type": [
                             "string",
                             "null"
