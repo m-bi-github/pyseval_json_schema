@@ -55,7 +55,10 @@
                     },
                     "description": {
                         "description": "A short description to explain the validation",
-                        "type": "string"
+                        "type": [
+                            "string",
+                            "null"
+                        ]
                     }
                 },
                 "additionalProperties": false,
